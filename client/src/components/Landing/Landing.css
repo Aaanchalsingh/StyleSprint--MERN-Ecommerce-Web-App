@@ -1,0 +1,96 @@
+.landing__container {
+    width: 100%;
+    min-height: 420px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    background:-webkit-linear-gradient(rgb(252, 0, 252),blue);
+    position: relative;
+    color: aliceblue;
+}
+
+
+.landing__header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.landing__header__container {
+    width: 40%;
+    height: auto;
+    min-height: 450px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing__header {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.landing__header__main {
+    font-size: 4.0rem;
+    font-weight: 800;
+}
+
+.landing__header__discount {
+    font-size: 1.2rem;
+}
+
+.landing__button {
+    width: 60%;
+    cursor: pointer;
+    color: aliceblue;
+    transition: .3s;
+}
+
+.landing__image__container {
+    width: 50%;
+    /* height: ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing__image {
+    height: 500px;
+    width: 1200px;
+    top: 0%;
+    z-index: 10;
+}
+
+
+@media screen and (max-width: 850px) {
+    .landing__image__container{
+       display: none;
+    }
+}
+.gradient {
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+	background-size: 180% 180%;
+	animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
