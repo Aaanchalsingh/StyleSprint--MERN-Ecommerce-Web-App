@@ -3,7 +3,7 @@ import "./shoe.css";
 
 function ShoesList() {
   return (
-    <ul>
+    <ul className="ull">
       <li class="adidas">
         <div>
           <h2>I-5923 RUNNER PRIDE</h2>

@@ -10,7 +10,7 @@ body {
   font-family: "Open Sans Condensed", sans-serif;
 }
 
-ul {
+.ull {
   margin: 100px 0;
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);

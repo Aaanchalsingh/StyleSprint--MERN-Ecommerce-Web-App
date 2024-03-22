@@ -20,6 +20,7 @@ import DrawerNav from '../components/Nav/DrawerNav/DrawerNav';
 import Checkout from '../components/Checkout/Checkout';
 import SearchProvider from '../Context/SearchProvider';
 import "../index.css"
+import ShoesList from '../components/ShoesList';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route path="/item/featured/:id" element={<ItemView />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/admin" element={<Wishlist />} />
+              <Route path="/shoe" element={<ShoesList />} />
             </Routes>
             <Footer />
           </Router>
