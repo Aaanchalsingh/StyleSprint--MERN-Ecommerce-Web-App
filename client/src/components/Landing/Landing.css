@@ -12,12 +12,15 @@
   background-color: yellow;
   z-index: -1;
 }
-.head1 h1{
-    margin-bottom: 5vw;
+.head1 h1 {
+  margin-bottom: 5vw;
 }
-.head1 p{
-    margin-bottom: 3vw;
+.head1 p {
+  margin-bottom: 1vw;
 }
-.head1 .btn{
-    margin-left: ;
+.head1 .photo img {
+  height: 25vh;
+  width: 15vw;
+  border-radius: 8%;
+
 }
