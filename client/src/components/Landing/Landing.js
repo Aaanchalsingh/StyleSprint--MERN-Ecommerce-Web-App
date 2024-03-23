@@ -8,14 +8,14 @@ function Landing() {
     return (
         <div>
             <div className='flex justify-between'>
-                <div className='head1  p-4 border-gray-400 ml-6'>
+                <div className='head1  p-4 border-gray-400 ml-12'>
                     <h1 className='text-8xl mb-5 relative'>
                         Daily Fabulous <span className="yellow-stroke">Styles for you</span>
                     </h1>
                     <p className="text-xl mb-3 text-slate-500">Ready to impress with our fabulous style collection</p>
-                    <div className="flex mb-6">
-                        <button className="btn pl-6 pr-6 btn-dark mr-4">Shop Now</button>
-                        <button className="btn btn-light border border-grey-100">Learn More</button>
+                    <div className="flex mb-6 but">
+                        <button className="btn pl-6 pr-6  mr-4 btn-hover color-1 text-3xl">Shop Now</button>
+                        <button className="btn btn-light  btn-hover color-10 text-3xl">Learn More</button>
                     </div >
                     <div className="photo flex mt-4">
                         <div>
