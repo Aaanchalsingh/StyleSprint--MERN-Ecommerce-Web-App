@@ -1,25 +1,52 @@
-import './Landing.css'
-import land from './2.png';
-import { Link } from "react-router-dom"
-import { Button } from "@mui/material";
+import React from "react";
+import Carousel from 'react-bootstrap/Carousel';
+import i1 from "./1.png";
+import i2 from "./2.png";
+import i3 from "./3.png";
+import i4 from "./4.png";
+import i5 from "./5.png";
+import "./Landing.css";
 
-const Landing = () => {
+function Landing() {
     return (
-        <div className="landing__container ">
-            <div className="landing__header__container">
-                <div className="landing__header">
-                    <h3 className="landing__header__discount">UP TO 15% DISCOUNT</h3>
-                    <h1 className="landing__header__main">Checkout The Best Fashion Style</h1>
-                    <Link to="/shop">
-                        <Button variant='outlined' sx={[ {width: '190px', height: '50px', borderRadius: '20px' , fontWeight: '700', backgroundColor: 'none', borderColor: 'black', color: 'black' }, {'&:hover': {  backgroundColor: "black" , color: "#FFE26E", borderColor: 'black'}}]}>SHOP NOW</Button>
-                    </Link>
-                </div>
-            </div>
-            <div className="landing__image__container">
-                <img className="landing__image" src={land} alt=""height={100} width={100}/>
-            </div>
-        </div>
-     );
+        <Carousel data-bs-theme="dark">
+            <Carousel.Item>
+                <img
+                    className="d-block w-100 carousel-image"
+                    src={i1}
+                    alt="First slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100 carousel-image"
+                    src={i2}
+                    alt="Second slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100 carousel-image"
+                    src={i3}
+                    alt="Third slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100 carousel-image"
+                    src={i4}
+                    alt="Third slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100 carousel-image"
+                    src={i5}
+                    alt="Third slide"
+                />
+            </Carousel.Item>
+        </Carousel>
+    );
 }
 
 export default Landing;

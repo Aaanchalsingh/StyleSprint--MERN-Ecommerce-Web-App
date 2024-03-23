@@ -82,6 +82,10 @@
 	background-size: 180% 180%;
 	animation: gradient-animation 6s ease infinite;
 }
+.carousel-image {
+    height: 90vh; /* Adjust this value as needed */
+    object-fit: cover;
+  }
 
 @keyframes gradient-animation {
 	0% {
