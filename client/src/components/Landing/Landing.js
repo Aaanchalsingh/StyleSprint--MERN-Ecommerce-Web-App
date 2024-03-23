@@ -1,51 +1,28 @@
-import React from "react";
-import Carousel from 'react-bootstrap/Carousel';
-import i1 from "./1.png";
-import i2 from "./2.png";
-import i3 from "./3.png";
-import i4 from "./4.png";
-import i5 from "./5.png";
+import React from 'react';
+import logo from "./1.png";
 import "./Landing.css";
 
 function Landing() {
     return (
-        <Carousel data-bs-theme="dark">
-            <Carousel.Item>
-                <img
-                    className="d-block w-100 carousel-image"
-                    src={i1}
-                    alt="First slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100 carousel-image"
-                    src={i2}
-                    alt="Second slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100 carousel-image"
-                    src={i3}
-                    alt="Third slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100 carousel-image"
-                    src={i4}
-                    alt="Third slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100 carousel-image"
-                    src={i5}
-                    alt="Third slide"
-                />
-            </Carousel.Item>
-        </Carousel>
+        <div>
+            <div className='flex justify-between'>
+                <div className='head1 border p-4 border-gray-400 ml-6'>
+                    <h1 className='text-8xl mb-6 relative'>
+                        Daily Fabulous <span className="yellow-stroke">Styles for you</span>
+                    </h1>
+                    <p className="text-2xl mb-6 text-slate-500">Ready to impress with our fabulous style collection</p>
+                    <div className="flex">
+                        <button className="btn btn-dark mr-4">Shop Now</button>
+                        <button className="btn btn-light">Learn More</button>
+                    </div >
+                    <div className="flex mt-2">
+                        <div className="bg-pink-600 rounded mr-4" style={{ height: "10vh", width: "20vw" }}></div>
+                        <div className="bg-yellow-600 rounded" style={{ height: "10vh", width: "20vw" }}></div>
+                    </div>
+                </div>
+                <img src={logo} alt="" style={{ height: "80vh", width: "auto" }} />
+            </div>
+        </div>
     );
 }
 
