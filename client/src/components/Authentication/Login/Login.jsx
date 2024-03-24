@@ -117,7 +117,7 @@ const Login = ({ setLoginUser }) => {
           <div className="container-info">
             <div className="info-item">
               <div className="table">
-                <div className="table-cell">
+                <div className="table-cell btn2">
                   <p>Have an account?</p>
                   <div className="btn" onClick={() => toggleForm("login")}>
                     Log in
@@ -149,7 +149,7 @@ const Login = ({ setLoginUser }) => {
                       <input
                         name="email"
                         placeholder="Email"
-                        type="text"
+                        type="email"
                         value={user.email}
                         onChange={handleChange}
                       />
@@ -188,7 +188,7 @@ const Login = ({ setLoginUser }) => {
                       <input
                         name="email"
                         placeholder="Email"
-                        type="text"
+                        type="email"
                         value={user.email}
                         onChange={handleChange}
                       />
