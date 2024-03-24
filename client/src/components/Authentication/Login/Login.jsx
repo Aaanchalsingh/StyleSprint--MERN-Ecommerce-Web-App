@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -13,6 +13,7 @@ const Login = ({ setLoginUser }) => {
   });
   const [isActive, setIsActive] = useState(false);
   const [containerClass, setContainerClass] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +21,7 @@ const Login = ({ setLoginUser }) => {
       ...user,
       [name]: value,
     });
+    setLoginError("");
   };
 
   const login = async (e) => {
@@ -29,12 +31,27 @@ const Login = ({ setLoginUser }) => {
         "https://shop-backend-three.vercel.app/Login",
         user
       );
-      const token = res.data.token;
-      localStorage.setItem("token", token);
-      navigate("/");
-      window.location.reload();
+      console.log(res.data);
+      if (res.data === "not registered") {
+        setLoginError("Invalid credentials");
+        setUser({
+          ...user,
+          email: "",
+          password: "",
+        });
+      } else {
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+        navigate("/");
+        window.location.reload();
+      }
     } catch (err) {
-      console.log(err);
+      setLoginError("Wrong credentials. Please try again.");
+      setUser({
+        ...user,
+        email: "",
+        password: "",
+      });
     }
   };
 
@@ -47,6 +64,7 @@ const Login = ({ setLoginUser }) => {
       fullName: "",
       username: "",
     });
+    setLoginError("");
   };
 
   return (
@@ -100,6 +118,11 @@ const Login = ({ setLoginUser }) => {
                         value={user.password}
                         onChange={handleChange}
                       />
+                      {loginError && (
+                        <p className="error text-red-600 ml-12">
+                          *{loginError}
+                        </p>
+                      )}
                       <div className="btn" onClick={login}>
                         Log in
                       </div>
