@@ -14,6 +14,7 @@ const Login = ({ setLoginUser }) => {
   const [isActive, setIsActive] = useState(false);
   const [containerClass, setContainerClass] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [signupError, setSignupError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,22 +23,42 @@ const Login = ({ setLoginUser }) => {
       [name]: value,
     });
     setLoginError("");
+    setSignupError("");
   };
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://shop-backend-nu.vercel.app/Register", user)
-      .then((res) => {
+    try {
+      const res = await axios.post(
+        "https://shop-backend-nu.vercel.app/Register",
+        user
+      );
+      console.log(res.data.message);
+      if (res.data.message === "User already exists") {
+        setSignupError("User already exists");
+        setUser({
+          ...user,
+          email: "",
+          password: "",
+          fullname: "",
+          username: "",
+        });
+      } else {
         const token = res.data.token;
-        if (token) {
-          localStorage.setItem("token", token);
-        }
-
+        localStorage.setItem("token", token);
         navigate("/");
         window.location.reload();
-      })
-      .catch((err) => console.log(err));
+      }
+    } catch (err) {
+      setSignupError("Wrong credentials. Please try again.");
+      setUser({
+        ...user,
+        email: "",
+        password: "",
+        fullname: "",
+        username: "",
+      });
+    }
   };
   // eslint-disable-next-line
   const handleLogout = () => {
@@ -58,7 +79,7 @@ const Login = ({ setLoginUser }) => {
         setUser({
           ...user,
           email: "",
-          password: ""
+          password: "",
         });
       } else {
         const token = res.data.token;
@@ -71,7 +92,7 @@ const Login = ({ setLoginUser }) => {
       setUser({
         ...user,
         email: "",
-        password: ""
+        password: "",
       });
     }
   };
@@ -81,9 +102,11 @@ const Login = ({ setLoginUser }) => {
     setContainerClass(formType === "login" ? "active" : "log-in");
     setUser({
       email: "",
-      password: ""
+      password: "",
     });
     setLoginError("");
+    setSignupError("");
+
   };
 
   return (
@@ -149,7 +172,7 @@ const Login = ({ setLoginUser }) => {
                   ) : (
                     <>
                       <input
-                        name="fullName"
+                        name="fullname"
                         placeholder="Full Name"
                         type="text"
                         value={user.fullname}
@@ -176,6 +199,11 @@ const Login = ({ setLoginUser }) => {
                         value={user.password}
                         onChange={handleChange}
                       />
+                      {signupError && (
+                        <p className="error text-red-600 ml-12">
+                          *{signupError}
+                        </p>
+                      )}
                       <div className="btn" onClick={register}>
                         Sign up
                       </div>

@@ -60,7 +60,7 @@ app.post("/Register", async (req, res) => {
   try {
     const existingUser=await User.findOne({ email: email });
     if (existingUser) {
-      res.send({ message: "User already exists" });
+      res.send({ message:"User already exists"});
     } else {
       const newUser=new User({ fullname, username, email, password });
       await newUser.save();
