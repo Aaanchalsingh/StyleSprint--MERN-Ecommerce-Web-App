@@ -5,9 +5,10 @@ import { useNavigate, Link } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
     email: "",
     password: "",
+    fullname: "",
+    username: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,12 +60,23 @@ const Register = () => {
               <div className=" relative ">
                 <input
                   type="text"
-                  id="create-account-pseudo"
-                  className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  name="name"
-                  value={user.name}
+                  id="create-account-pseudoo"
+                  name="fullname"
+                  value={user.fullname}
                   onChange={handleChange}
-                  placeholder="FullName"
+                  placeholder="fullname"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col mb-2">
+              <div className=" relative ">
+                <input
+                  type="text"
+                  id="create-account-pseudo"
+                  name="username"
+                  value={user.username}
+                  onChange={handleChange}
+                  placeholder="username"
                 />
               </div>
             </div>
@@ -73,7 +85,6 @@ const Register = () => {
                 <input
                   type="text"
                   id="create-account-first-name"
-                  className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   name="email"
                   value={user.email}
                   onChange={handleChange}
@@ -86,7 +97,6 @@ const Register = () => {
                 <input
                   type="password"
                   id="create-account-email"
-                  className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   name="password"
                   value={user.password}
                   onChange={handleChange}
@@ -95,11 +105,7 @@ const Register = () => {
               </div>
             </div>
             <div className="flex w-full my-4">
-              <button
-                type="button"
-                className="py-2 px-4 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg "
-                onClick={register}
-              >
+              <button type="button" onClick={register}>
                 Register
               </button>
             </div>

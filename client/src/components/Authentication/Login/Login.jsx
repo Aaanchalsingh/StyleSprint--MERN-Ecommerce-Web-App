@@ -8,7 +8,7 @@ const Login = ({ setLoginUser }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    fullName: "",
+    fullname: "",
     username: "",
   });
   const [isActive, setIsActive] = useState(false);
@@ -24,6 +24,27 @@ const Login = ({ setLoginUser }) => {
     setLoginError("");
   };
 
+  const register = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://shop-backend-three.vercel.app/Register", user)
+      .then((res) => {
+        const token = res.data.token;
+        if (token) {
+          localStorage.setItem("token", token);
+        }
+
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+  // eslint-disable-next-line
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/account/login");
+  };
+
   const login = async (e) => {
     e.preventDefault();
     try {
@@ -37,7 +58,7 @@ const Login = ({ setLoginUser }) => {
         setUser({
           ...user,
           email: "",
-          password: "",
+          password: ""
         });
       } else {
         const token = res.data.token;
@@ -50,7 +71,7 @@ const Login = ({ setLoginUser }) => {
       setUser({
         ...user,
         email: "",
-        password: "",
+        password: ""
       });
     }
   };
@@ -60,9 +81,7 @@ const Login = ({ setLoginUser }) => {
     setContainerClass(formType === "login" ? "active" : "log-in");
     setUser({
       email: "",
-      password: "",
-      fullName: "",
-      username: "",
+      password: ""
     });
     setLoginError("");
   };
@@ -133,7 +152,7 @@ const Login = ({ setLoginUser }) => {
                         name="fullName"
                         placeholder="Full Name"
                         type="text"
-                        value={user.fullName}
+                        value={user.fullname}
                         onChange={handleChange}
                       />
                       <input
@@ -157,7 +176,7 @@ const Login = ({ setLoginUser }) => {
                         value={user.password}
                         onChange={handleChange}
                       />
-                      <div className="btn" onClick={login}>
+                      <div className="btn" onClick={register}>
                         Sign up
                       </div>
                     </>

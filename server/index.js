@@ -21,7 +21,8 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 const userSchema=new mongoose.Schema({
-  name: String,
+  fullname: String,
+  username: String,
   email: String,
   password: String
 });
@@ -55,13 +56,13 @@ app.post("/Login", async (req, res) => {
 });
 
 app.post("/Register", async (req, res) => {
-  const { name, email, password }=req.body;
+  const { fullname, username, email, password }=req.body;
   try {
     const existingUser=await User.findOne({ email: email });
     if (existingUser) {
       res.send({ message: "User already exists" });
     } else {
-      const newUser=new User({ name, email, password });
+      const newUser=new User({ fullname, username, email, password });
       await newUser.save();
       const token=jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
       res.send({ message: "Registration successful", token: token });
