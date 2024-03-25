@@ -5,6 +5,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Badge from '@mui/material/Badge';
 import Cart from '../../Card/Cart/Cart';
 import { WishItemsContext } from '../../../Context/WishItemsContext';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+
 
 const Control=() => {
     const wishItems=useContext(WishItemsContext);
@@ -44,6 +46,9 @@ const Control=() => {
                 <div className="control">
                     <Cart />
                 </div>
+                <Link to="/profile">
+                    <PersonOutlineIcon color="black" sx={{ width: '45px' }} />
+                </Link>
             </div>
         </div>
     );

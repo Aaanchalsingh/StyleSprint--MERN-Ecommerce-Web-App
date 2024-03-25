@@ -149,7 +149,7 @@ const Login = ({ setLoginUser }) => {
                       <input
                         name="email"
                         placeholder="Email"
-                        type="email"
+                        type="text"
                         value={user.email}
                         onChange={handleChange}
                       />
@@ -188,7 +188,7 @@ const Login = ({ setLoginUser }) => {
                       <input
                         name="email"
                         placeholder="Email"
-                        type="email"
+                        type="text"
                         value={user.email}
                         onChange={handleChange}
                       />
