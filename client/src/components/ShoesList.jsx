@@ -1,10 +1,11 @@
-import React, {axios} from "react";
+import React from "react";
+import axios from 'axios';
 import styles from "./ShoesList.module.css";
 
 function ShoesList() {
-  const handleAddToWishList = (shoe) => {
+  const handleAddToCart = (shoe) => {
     axios
-      .post("/api/cart/add", shoe)
+      .post("http://localhost:6969/api/cart/add", shoe)
       .then((response) => {
         console.log("Item added to cart:", response.data);
       })
@@ -245,7 +246,7 @@ function ShoesList() {
               className={`${styles.imgi} cursor-pointer`}
               src={shoe.image}
               alt=""
-              onClick={() => handleAddToWishList(shoe)}
+              onClick={() => handleAddToCart(shoe)}
             />
           </li>
         ))}

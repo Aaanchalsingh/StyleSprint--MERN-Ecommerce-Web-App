@@ -24,6 +24,32 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   console.error("Error connecting to MongoDB:", err);
 });
 
+const shoeSchema=new mongoose.Schema({
+  brand: String,
+  name: String,
+  price: String,
+  image: String,
+});
+
+const cartDB=mongoose.createConnection(process.env.MONGO_URI_CART, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const Shoe=cartDB.model("cart", shoeSchema);
+
+app.post("/api/cart/add", (req, res) => {
+  const shoeData=req.body;
+  const newShoe=new Shoe(shoeData);
+  newShoe.save((err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error saving to database");
+    } else {
+      res.status(200).send("Shoe added to cart successfully");
+    }
+  });
+});
+
 
 const userSchema=new mongoose.Schema({
   fullname: String,
@@ -57,6 +83,15 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+app.get("/api/cart/items", async (req, res) => {
+  try {
+    const cartItems=await Cart.find();
+    res.json(cartItems);
+  } catch (error) {
+    console.error("Error fetching cart items:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
