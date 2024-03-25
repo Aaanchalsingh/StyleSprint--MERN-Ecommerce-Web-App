@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, {axios} from "react";
 import styles from "./ShoesList.module.css";
-import { CartItemsContext } from "../Context/CartItemsContext";
 
 function ShoesList() {
-  const cartItemsContext = useContext(CartItemsContext);
-
   const handleAddToWishList = (shoe) => {
-    console.log(shoe);
-    cartItemsContext.addItem(shoe, 1);
+    axios
+      .post("/api/cart/add", shoe)
+      .then((response) => {
+        console.log("Item added to cart:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error adding item to cart:", error);
+      });
   };
 
   const shoesData = [

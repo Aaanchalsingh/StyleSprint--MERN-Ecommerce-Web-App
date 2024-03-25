@@ -3,22 +3,27 @@ const app=express();
 const cors=require("cors");
 require("dotenv").config();
 const connectDB=require("./config/db");
-const bodyParser=require('body-parser');
 const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 connectDB();
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log("Connected to AuthDatabase");
+  return mongoose.createConnection(process.env.MONGO_URI_CART, { useNewUrlParser: true, useUnifiedTopology: true });
+}).then((cartDB) => {
+  console.log("Connected to CartDatabase");
+  return mongoose.createConnection(process.env.MONGO_URI_WISHLIST, { useNewUrlParser: true, useUnifiedTopology: true });
+}).then((wishlistDB) => {
+  console.log("Connected to WishlistDatabase");
 }).catch((err) => {
   console.error("Error connecting to MongoDB:", err);
 });
+
 
 const userSchema=new mongoose.Schema({
   fullname: String,
@@ -33,9 +38,9 @@ const User=mongoose.model("User", userSchema);
 
 app.get("/", (req, res) => {
   res.json("hello its me your backend");
-})
+});
 
-app.post("/Login", async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password }=req.body;
   try {
     const user=await User.findOne({ email: email });
@@ -55,12 +60,12 @@ app.post("/Login", async (req, res) => {
   }
 });
 
-app.post("/Register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { fullname, username, email, password }=req.body;
   try {
     const existingUser=await User.findOne({ email: email });
     if (existingUser) {
-      res.send({ message:"User already exists"});
+      res.send({ message: "User already exists" });
     } else {
       const newUser=new User({ fullname, username, email, password });
       await newUser.save();
@@ -73,11 +78,12 @@ app.post("/Register", async (req, res) => {
   }
 });
 
-app.post("/Logout", (req, res) => {
+app.post("/logout", (req, res) => {
   res.clearCookie('token');
   res.send({ message: "Logout successful" });
 });
 
-app.listen(6969, () => {
-  console.log("Server started on port 6969");
+const PORT=process.env.PORT||6969;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
