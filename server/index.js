@@ -12,43 +12,44 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 connectDB();
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("Connected to AuthDatabase");
-  return mongoose.createConnection(process.env.MONGO_URI_CART, { useNewUrlParser: true, useUnifiedTopology: true });
-}).then((cartDB) => {
-  console.log("Connected to CartDatabase");
-  return mongoose.createConnection(process.env.MONGO_URI_WISHLIST, { useNewUrlParser: true, useUnifiedTopology: true });
-}).then((wishlistDB) => {
-  console.log("Connected to WishlistDatabase");
-}).catch((err) => {
-  console.error("Error connecting to MongoDB:", err);
 });
+//   return mongoose.createConnection(process.env.MONGO_URI_CART, { useNewUrlParser: true, useUnifiedTopology: true });
+// }).then((cartDB) => {
+//   console.log("Connected to CartDatabase");
+//   return mongoose.createConnection(process.env.MONGO_URI_WISHLIST, { useNewUrlParser: true, useUnifiedTopology: true });
+// }).then((wishlistDB) => {
+//   console.log("Connected to WishlistDatabase");
+// }).catch((err) => {
+//   console.error("Error connecting to MongoDB:", err);
+// });
 
-const shoeSchema=new mongoose.Schema({
-  brand: String,
-  name: String,
-  price: String,
-  image: String,
-});
+// const shoeSchema=new mongoose.Schema({
+//   brand: String,
+//   name: String,
+//   price: String,
+//   image: String,
+// });
 
-const cartDB=mongoose.createConnection(process.env.MONGO_URI_CART, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const Shoe=cartDB.model("cart", shoeSchema);
+// const cartDB=mongoose.createConnection(process.env.MONGO_URI_CART, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// const Shoe=cartDB.model("cart", shoeSchema);
 
-app.post("/api/cart/add", (req, res) => {
-  const shoeData=req.body;
-  const newShoe=new Shoe(shoeData);
-  newShoe.save((err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Error saving to database");
-    } else {
-      res.status(200).send("Shoe added to cart successfully");
-    }
-  });
-});
+// app.post("/api/cart/add", (req, res) => {
+//   const shoeData=req.body;
+//   const newShoe=new Shoe(shoeData);
+//   newShoe.save((err) => {
+//     if (err) {
+//       console.error(err);
+//       res.status(500).send("Error saving to database");
+//     } else {
+//       res.status(200).send("Shoe added to cart successfully");
+//     }
+//   });
+// });
 
 
 const userSchema=new mongoose.Schema({
