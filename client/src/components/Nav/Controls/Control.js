@@ -15,7 +15,7 @@ const Control=() => {
     };
 
     return (
-        <div className="control__bar__container">
+        <div className="control__bar__container mr-5">
             <div className="controls__container flex">
                 {isLoggedIn? (
                     <button

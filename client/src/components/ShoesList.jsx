@@ -1,19 +1,20 @@
-import React from "react";
-import axios from 'axios';
+import React, { useContext } from "react";
 import styles from "./ShoesList.module.css";
-
+import { CartItemsContext } from "../Context/CartItemsContext";
+var _id = 0,
+  size = 0;
 function ShoesList() {
+  const cartItemsContext = useContext(CartItemsContext);
+  _id++;
+  size++;
   const handleAddToCart = (shoe) => {
-    axios
-      .post("http://localhost:6969/api/cart/add", shoe)
-      .then((response) => {
-        console.log("Item added to cart:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error adding item to cart:", error);
-      });
+    if (shoe !== undefined) {
+      const { brand, name, price, image } = shoe;
+      const item = { _id, brand, name, price, image, size };
+      console.log(item);
+      cartItemsContext.addShoes(item, 1);
+    }
   };
-
   const shoesData = [
     {
       brand: "Nike",
@@ -237,7 +238,7 @@ function ShoesList() {
     <div className={styles.body}>
       <ul className={styles.ull}>
         {shoesData.map((shoe, index) => (
-          <li key={index} className={styles.lii}>
+          <li key={shoe.brand + index} className={styles.lii}>
             <div className={styles.divi}>
               <h2>{shoe.name}</h2>
               <p className={styles.pi}>{shoe.price}</p>
@@ -245,7 +246,8 @@ function ShoesList() {
             <img
               className={`${styles.imgi} cursor-pointer`}
               src={shoe.image}
-              alt=""
+              alt={shoe.image}
+              id={shoe.image}
               onClick={() => handleAddToCart(shoe)}
             />
           </li>
