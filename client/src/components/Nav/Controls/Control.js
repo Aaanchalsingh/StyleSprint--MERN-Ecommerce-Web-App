@@ -46,7 +46,7 @@ const Control=() => {
                 <div className="control">
                     <Cart />
                 </div>
-                <Link to="/profile">
+                <Link to="/account/manage">
                     <PersonOutlineIcon color="black" sx={{ width: '45px' }} />
                 </Link>
             </div>

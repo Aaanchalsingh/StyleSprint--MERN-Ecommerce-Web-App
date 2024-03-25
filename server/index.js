@@ -63,6 +63,37 @@ const JWT_SECRET=process.env.JWT_SECRET;
 
 const User=mongoose.model("User", userSchema);
 
+app.get("/userdata", async (req, res) => {
+  try {
+    const token=req.headers.authorization.split(" ")[1];
+    const decoded=jwt.verify(token, JWT_SECRET);
+    const userId=decoded.userId;
+    const user=await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(user);
+    res.json(user);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/updateuserdata", async (req, res) => {
+  try {
+    const token=req.headers.authorization.split(" ")[1];
+    const decoded=jwt.verify(token, JWT_SECRET);
+    const userId=decoded.userId;
+    // Find user by ID and update user data
+    await User.findByIdAndUpdate(userId, req.body);
+    res.status(200).json({ message: "User data updated successfully" });
+  } catch (error) {
+    console.error("Error updating user data:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 app.get("/", (req, res) => {
   res.json("hello its me your backend");
 });
