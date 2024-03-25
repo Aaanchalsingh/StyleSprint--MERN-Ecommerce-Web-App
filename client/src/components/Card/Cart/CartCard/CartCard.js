@@ -37,7 +37,7 @@ const CartCard=(props) => {
         <div className='cart__item__card'>
             <div className="cart__item__detail">
                 <div className="cart__item__image">
-                    <img src={`https://shema-ecommerce.herokuapp.com/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="item__image" />
+                    <img src={`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="item__image" />
                 </div>
                 <div className="cart__item__name">{props.item.name}</div>
             </div>
