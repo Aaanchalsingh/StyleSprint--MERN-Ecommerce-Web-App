@@ -32,12 +32,15 @@ const CartCard=(props) => {
     const handleSizeChange=(event) => {
         setSize(event.target.value);
     };
+    const handleImageError = (event) => {
+        event.target.src = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger05.png';
+    };
 
     return (
         <div className='cart__item__card'>
             <div className="cart__item__detail">
                 <div className="cart__item__image">
-                    <img src={`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="item__image" />
+                    <img src={`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="item__image"onError={handleImageError} />
                 </div>
                 <div className="cart__item__name">{props.item.name}</div>
             </div>

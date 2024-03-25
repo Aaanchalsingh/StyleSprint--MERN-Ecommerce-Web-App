@@ -27,6 +27,7 @@ function ShoesList() {
       name: "Future Rider Twofold",
       price: "999/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger05.png",
+
     },
     {
       brand: "Reebok",
