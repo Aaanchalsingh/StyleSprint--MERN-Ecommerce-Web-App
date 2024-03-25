@@ -1,42 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./ShoesList.module.css";
+import { CartItemsContext } from "../Context/CartItemsContext";
 
 function ShoesList() {
-  // Define an array of shoe data
+  const cartItemsContext = useContext(CartItemsContext);
+
+  const handleAddToWishList = (shoe) => {
+    console.log(shoe);
+    cartItemsContext.addItem(shoe, 1);
+  };
+
   const shoesData = [
     {
-      brand: "adidas",
-      name: "I-5923 RUNNER PRIDE",
-      price: "1999/-",
+      brand: "Nike",
+      name: "Air Zoom Pegasus 38",
+      price: "2199/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/adidas01.png",
     },
     {
-      brand: "tiger",
-      name: "TIGER ALLY",
+      brand: "Puma",
+      name: "Future Rider Twofold",
       price: "999/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger05.png",
     },
     {
-      brand: "adidas",
-      name: "I-5923 RUNNER PRIDE",
-      price: "1999/-",
+      brand: "Reebok",
+      name: "Nano X1",
+      price: "1899/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/adidas02.png",
     },
     {
-      brand: "tiger",
-      name: "TIGER ALLY",
-      price: "999/-",
+      brand: "Under Armour",
+      name: "Charged Assert 8",
+      price: "1499/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger02.png",
     },
     {
-      brand: "adidas",
-      name: "I-5923 RUNNER PRIDE",
-      price: "1999/-",
+      brand: "New Balance",
+      name: "Fresh Foam 1080v11",
+      price: "2499/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/adidas03.png",
     },
     {
-      brand: "adidas",
-      name: "I-5923 RUNNER PRIDE",
+      brand: "Adidas",
+      name: "Solarboost 3",
       price: "1999/-",
       image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/adidas04.png",
     },
@@ -231,7 +238,12 @@ function ShoesList() {
               <h2>{shoe.name}</h2>
               <p className={styles.pi}>{shoe.price}</p>
             </div>
-            <img className={styles.imgi} src={shoe.image} alt="" />
+            <img
+              className={`${styles.imgi} cursor-pointer`}
+              src={shoe.image}
+              alt=""
+              onClick={() => handleAddToWishList(shoe)}
+            />
           </li>
         ))}
       </ul>

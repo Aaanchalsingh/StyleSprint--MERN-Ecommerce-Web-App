@@ -13,6 +13,7 @@ const ItemCard = (props) => {
     const wishItemsContext = useContext(WishItemsContext)
 
     const handleAddToWishList = () => {
+        console.log(props.item)
         wishItemsContext.addItem(props.item)
     }
 
@@ -20,13 +21,13 @@ const ItemCard = (props) => {
         cartItemsContext.addItem(props.item, 1)
     }
 
-    return ( 
+    return (
         <div className="product__card__card">
             <div className="product__card">
-                <div className="product__image" 
+                <div className="product__image"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                > 
+                >
                     {isHovered? <img src={`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[1].filename}`} alt="item" className="product__img"/>: <img src= {`https://shema-backend.vercel.app/public/${props.item.category}/${props.item.image[0].filename}`} alt="item" className="product__img"/> }
                 </div>
                 <div className="product__card__detail">
@@ -54,5 +55,5 @@ const ItemCard = (props) => {
         </div>
      );
 }
- 
+
 export default ItemCard;
