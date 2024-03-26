@@ -53,13 +53,13 @@ const ManageAccount=() => {
     return (
         <Account>
             <div className="manage__account__container">
-                <div className="edit__account__container">
+                <div className="edit__account__container ">
                     <div className="edit__account">
                         <div className="edit__account__header">Edit account</div>
-                        <div className="edit__account__form__container">
-                            <div className="edit__account__form">
-                                <div className="fname__input__container edit__input__container">
-                                    <label className="fname__label input__label">First name</label>
+                        <div className="edit__account__form__container flex justify-between">
+                            <div className="edit__account__form flex justify-between">
+                                <div className="fname__input__container edit__input__container flex">
+                                    <label className="fname__label input__label mr-12">First name</label>
                                     <input
                                         type="text"
                                         className="fname__input edit__account__input"
@@ -68,8 +68,8 @@ const ManageAccount=() => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="lname__input__container edit__input__container">
-                                    <label className="lname__label input__label">User name</label>
+                                <div className="lname__input__container edit__input__container flex">
+                                    <label className="lname__label input__label mr-12">User name</label>
                                     <input
                                         type="text"
                                         className="lname__input edit__account__input"
@@ -78,8 +78,8 @@ const ManageAccount=() => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="lname__input__container edit__input__container">
-                                    <label className="lname__label input__label">Email</label>
+                                <div className="lname__input__container edit__input__container flex">
+                                    <label className="lname__label input__label mr-12">Email</label>
                                     <input
                                         type="text"
                                         className="lname__input edit__account__input"
