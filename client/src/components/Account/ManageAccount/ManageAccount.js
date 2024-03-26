@@ -54,12 +54,12 @@ const ManageAccount=() => {
         <Account>
             <div className="manage__account__container">
                 <div className="edit__account__container ">
-                    <div className="edit__account">
+                    <div className="edit__account ml-5">
                         <div className="edit__account__header">Edit account</div>
-                        <div className="edit__account__form__container flex justify-between">
-                            <div className="edit__account__form flex justify-between">
+                        <div className=" edit__account__form__container ">
+                            <div className="edit__account__form ">
                                 <div className="fname__input__container edit__input__container flex">
-                                    <label className="fname__label input__label mr-12">First name</label>
+                                    <label className="fname__label input__label mr-6">First&nbsp;name</label>
                                     <input
                                         type="text"
                                         className="fname__input edit__account__input"
@@ -69,7 +69,7 @@ const ManageAccount=() => {
                                     />
                                 </div>
                                 <div className="lname__input__container edit__input__container flex">
-                                    <label className="lname__label input__label mr-12">User name</label>
+                                    <label className="lname__label input__label mr-6">User&nbsp;name</label>
                                     <input
                                         type="text"
                                         className="lname__input edit__account__input"

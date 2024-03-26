@@ -17,6 +17,7 @@
   background-position: center;
   border-radius: 32px;
   box-shadow: 1px 1px 1px 1px rgb(190, 190, 187);
+  display: flex;
 }
 
 .edit__account {
@@ -47,7 +48,7 @@
 }
 
 .edit__account__input {
-  height: 50%;
+  height: 35%;
   width: 100%;
 }
 
