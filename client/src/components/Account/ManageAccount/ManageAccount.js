@@ -54,8 +54,8 @@ const ManageAccount=() => {
     };
 
     const handleDelete=async (e) => {
-        const userId=userData.userId;
-
+        const userId=userData._id;
+        console.log(userId);
         try {
             await axios.delete(`https://shop-backend-nu.vercel.app/deleteuser/${userId}`, {
                 headers: {

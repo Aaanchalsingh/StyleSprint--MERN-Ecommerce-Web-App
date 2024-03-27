@@ -94,7 +94,7 @@ const verifyToken=async (req, res, next) => {
   }
 };
 
-app.delete('/users/:userId', verifyToken, async (req, res) => {
+app.delete('/deleteuser/:userId', verifyToken, async (req, res) => {
   const userId=req.params.userId;
   try {
     const user=await User.findById(userId);
