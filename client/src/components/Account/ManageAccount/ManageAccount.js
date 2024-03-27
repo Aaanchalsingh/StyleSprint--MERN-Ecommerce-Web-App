@@ -65,6 +65,7 @@ const ManageAccount=() => {
             localStorage.removeItem("token");
             alert('User deleted successfully');
             navigate('/');
+            window.location.reload();
         } catch (error) {
             console.error('Error deleting user:', error);
         }
