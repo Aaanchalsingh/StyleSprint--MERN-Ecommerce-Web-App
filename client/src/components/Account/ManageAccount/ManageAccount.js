@@ -42,7 +42,7 @@ const ManageAccount=() => {
     const handleSubmit=async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/updateuserdata', userData, {
+            await axios.post('https://style-sprint-mern-ecommerce-web-app.vercel.app/updateuserdata', userData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -57,7 +57,7 @@ const ManageAccount=() => {
         const userId=userData._id;
         console.log(userId);
         try {
-            await axios.delete(`/deleteuser/${userId}`, {
+            await axios.delete(`https://style-sprint-mern-ecommerce-web-app.vercel.app/deleteuser/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

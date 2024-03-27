@@ -21,7 +21,7 @@ const Register = () => {
   const register = (e) => {
     e.preventDefault();
     axios
-      .post("/Register", user)
+      .post("https://style-sprint-mern-ecommerce-web-app.vercel.app/Register", user)
       .then((res) => {
         const token = res.data.token;
         if (token) {
