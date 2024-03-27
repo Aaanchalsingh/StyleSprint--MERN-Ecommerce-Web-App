@@ -41,7 +41,7 @@ const ManageAccount=() => {
     const handleSubmit=async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:6969/updateuserdata', userData, {
+            await axios.post('https://shop-backend-nu.vercel.app/updateuserdata', userData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
