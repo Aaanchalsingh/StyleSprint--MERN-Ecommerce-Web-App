@@ -14,7 +14,7 @@ const ManageAccount=() => {
     useEffect(() => {
         const fetchUserData=async () => {
             try {
-                const response=await axios.get('http://localhost:6969/userdata', {
+                const response=await axios.get('https://shop-backend-nu.vercel.app/userdata', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -39,7 +39,7 @@ const ManageAccount=() => {
     const handleSubmit=async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:6969/updateuserdata', userData, {
+            await axios.post('https://shop-backend-nu.vercel.app/updateuserdata', userData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
