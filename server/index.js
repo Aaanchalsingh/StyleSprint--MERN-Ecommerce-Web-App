@@ -96,17 +96,6 @@ app.post("/updateuserdata", async (req, res) => {
 app.get("/", (req, res) => {
   res.json("hello its me your backend");
 });
-app.post('/deleteuser', async (req, res) => {
-  const userId=req.user._id;
-  try {
-    await User.findByIdAndDelete(userId);
-    res.status(200).json({ message: 'User deleted successfully' });
-  } catch (error) {
-    console.log(userId);
-    console.error('Error deleting user:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 app.post("/login", async (req, res) => {
   const { email, password }=req.body;
   try {

@@ -5,18 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import './ManageAccount.css';
 
 const ManageAccount=() => {
-    const navigate = useNavigate();
+    const navigate=useNavigate();
     const [userData, setUserData]=useState({
         email: "",
         password: "",
         fullname: "",
         username: "",
+        userId: ""
     });
 
     useEffect(() => {
         const fetchUserData=async () => {
             try {
-                const response=await axios.get('http://localhost:6969/userdata', {
+                const response=await axios.get('https://shop-backend-nu.vercel.app/userdata', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -51,10 +52,12 @@ const ManageAccount=() => {
             console.error('Error updating user data:', error);
         }
     };
+
     const handleDelete=async (e) => {
-        e.preventDefault();
+        const userId=userData.userId;
+
         try {
-            await axios.delete('https://shop-backend-nu.vercel.app/deleteuser', {
+            await axios.delete(`https://shop-backend-nu.vercel.app/deleteuser/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -119,7 +122,7 @@ const ManageAccount=() => {
                         </div>
                         <div className="delete__account__prompt">Do you want to cancel subscription?</div>
                         <div className="delete__account__button__container">
-                            <button className="delete__account__button" onClick={handleDelete} >Delete Account</button>
+                            <button className="delete__account__button" onClick={handleDelete}>Delete Account</button>
                         </div>
                     </div>
                 </div>
