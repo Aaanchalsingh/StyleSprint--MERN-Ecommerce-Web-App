@@ -55,9 +55,9 @@ const ManageAccount=() => {
             <div className="manage__account__container">
                 <div className="edit__account__container ">
                     <div className="edit__account ml-5">
-                        <div className="edit__account__header">Edit account</div>
+                        <div className="edit__account__header mt-2">Edit account</div>
                         <div className=" edit__account__form__container ">
-                            <div className="edit__account__form ">
+                            <div className="edit__account__form flex flex-col flex-wrap justify-evenly">
                                 <div className="fname__input__container edit__input__container flex">
                                     <label className="fname__label input__label mr-6">First&nbsp;name</label>
                                     <input
@@ -79,17 +79,17 @@ const ManageAccount=() => {
                                     />
                                 </div>
                                 <div className="lname__input__container edit__input__container flex">
-                                    <label className="lname__label input__label mr-12">Email</label>
+                                    <label className="lname__label input__label ml-5 ">Email</label>
                                     <input
                                         type="text"
-                                        className="lname__input edit__account__input"
+                                        className="lname__input edit__account__input ml-4"
                                         name="email"
                                         value={userData.email}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div className="save__changes__button__container">
-                                    <button className="save__changes__button" onClick={handleSubmit}>Save Changes</button>
+                                    <button className="save__changes__button btn btn-dark btn-hover mr-10" onClick={handleSubmit}>Save Changes</button>
                                 </div>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .edit__account__container {
@@ -50,24 +50,6 @@
 .edit__account__input {
   height: 35%;
   width: 100%;
-}
-
-.save__changes__button__container {
-  height: 30%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.save__changes__button {
-  height: 60%;
-  width: 50%;
-  font-size: 1rem;
-  background-color: #ffe26e;
-  border-color: #ffe26e;
-  border-style: dashed;
-  font-weight: bold;
 }
 
 .separator__line {
