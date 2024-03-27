@@ -89,7 +89,7 @@ const ManageAccount=() => {
                                     />
                                 </div>
                                 <div className="save__changes__button__container">
-                                    <button className="save__changes__button btn btn-dark btn-hover mr-10" onClick={handleSubmit}>Save Changes</button>
+                                    <button className="save__changes__button btn btn-dark btn-hover ml-[40%]" onClick={handleSubmit}>Save Changes</button>
                                 </div>
                             </div>
                         </div>
