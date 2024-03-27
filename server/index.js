@@ -85,7 +85,6 @@ app.post("/updateuserdata", async (req, res) => {
     const token=req.headers.authorization.split(" ")[1];
     const decoded=jwt.verify(token, JWT_SECRET);
     const userId=decoded.userId;
-    // Find user by ID and update user data
     await User.findByIdAndUpdate(userId, req.body);
     res.status(200).json({ message: "User data updated successfully" });
   } catch (error) {
@@ -97,13 +96,13 @@ app.post("/updateuserdata", async (req, res) => {
 app.get("/", (req, res) => {
   res.json("hello its me your backend");
 });
-app.delete('/deleteuser', async (req, res) => {
+app.post('/deleteuser', async (req, res) => {
   const userId=req.user._id;
   try {
     await User.findByIdAndDelete(userId);
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
-    console.log(req.user);
+    console.log(userId);
     console.error('Error deleting user:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
