@@ -47,7 +47,7 @@ const ManageAccount=() => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            localStorage.removeItem("token");
+
             alert('User data updated successfully');
         } catch (error) {
             console.error('Error updating user data:', error);
@@ -63,6 +63,7 @@ const ManageAccount=() => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
+            localStorage.removeItem("token");
             alert('User deleted successfully');
             navigate('/');
         } catch (error) {
