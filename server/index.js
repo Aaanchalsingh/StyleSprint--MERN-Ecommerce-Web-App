@@ -97,7 +97,7 @@ app.post("/updateuserdata", async (req, res) => {
 app.get("/", (req, res) => {
   res.json("hello its me your backend");
 });
-app.post('/deleteuser', async (req, res) => {
+app.delete('/deleteuser', async (req, res) => {
   const userId=req.user.id;
   try {
     await User.findByIdAndDelete(userId);
