@@ -30,7 +30,7 @@ const Login = ({ setLoginUser }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://shop-backend-nu.vercel.app/Register",
+        "https://style-sprint-mern-ecommerce-web-app.vercel.app/Register",
         user
       );
       console.log(res.data.message);
@@ -70,7 +70,7 @@ const Login = ({ setLoginUser }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://shop-backend-nu.vercel.app/Login",
+        "https://style-sprint-mern-ecommerce-web-app.vercel.app/Login",
         user
       );
       console.log(res.data);
