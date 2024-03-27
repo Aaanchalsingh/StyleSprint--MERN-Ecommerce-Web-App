@@ -47,7 +47,6 @@ const ManageAccount=() => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
-
             alert('User data updated successfully');
         } catch (error) {
             console.error('Error updating user data:', error);
