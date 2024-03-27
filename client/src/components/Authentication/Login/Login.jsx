@@ -30,7 +30,7 @@ const Login = ({ setLoginUser }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://style-sprint-mern-ecommerce-web-app.vercel.app/Register",
+        "/Register",
         user
       );
       console.log(res.data.message);
@@ -70,7 +70,7 @@ const Login = ({ setLoginUser }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://style-sprint-mern-ecommerce-web-app.vercel.app/Login",
+        "/Login",
         user
       );
       console.log(res.data);
