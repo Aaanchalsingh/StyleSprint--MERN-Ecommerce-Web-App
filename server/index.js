@@ -103,6 +103,7 @@ app.delete('/deleteuser', async (req, res) => {
     await User.findByIdAndDelete(userId);
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
+    console.log(req.user);
     console.error('Error deleting user:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
