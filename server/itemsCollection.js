@@ -1,3 +1,7 @@
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb+srv://Aanchal:Aanchal123@cluster0.jfg08id.mongodb.net/Authentication';
+const dbName = 'Items';
+const collectionName = 'items';
 const itemsCollection = [
     {
         "_id": "630b7c690dd4ac34455cb262",
@@ -1494,3 +1498,26 @@ const itemsCollection = [
         "__v": 0
     }
 ]
+async function insertItems() {
+    // Connect to MongoDB
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    try {
+        await client.connect();
+        console.log('Connected to MongoDB');
+
+        // Select database
+        const db = client.db(dbName);
+
+        // Insert data into collection
+        const result = await db.collection(collectionName).insertMany(itemsCollection);
+        console.log(`${result.insertedCount} items inserted into the collection`);
+
+    } catch (err) {
+        console.error('Error inserting items:', err);
+    } finally {
+        await client.close();
+        console.log('Connection closed');
+    }
+}
+
+insertItems();

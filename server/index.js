@@ -11,23 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
-connectDB();
 
-app.get('/api/items', async (req, res) => {
-  try {
-    const items=await Item.find();
-    res.json(items);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
-// mongoose.connect(process.env.MONGO_URI).then(() => {
-//   console.log("Connected to MongoDB");
-// }).catch((err) => {
-//   console.error("Error connecting to MongoDB:", err);
-// });
+var conn=mongoose.createConnection(process.env.MONGO_URI);
+var conn2=mongoose.createConnection("mongodb+srv://Aanchal:Aanchal123@cluster0.jfg08id.mongodb.net/Items");
 
 const shoeSchema=new mongoose.Schema({
   brand: String,
@@ -138,6 +125,17 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+
+app.get('/api/items', async (req, res) => {
+  try {
+    const items=await Item.find();
+    res.json(items);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
