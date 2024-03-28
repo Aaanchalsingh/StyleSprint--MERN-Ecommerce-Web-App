@@ -5,7 +5,7 @@ const { getItem, addItem, updateItem, deleteItem } = require("../controllers/ite
 
 router.get('/', cors(), getItem)
 
-
+router.post('/', addItem)
 router.put('/:id', updateItem)
 
 router.delete('/:id', deleteItem)

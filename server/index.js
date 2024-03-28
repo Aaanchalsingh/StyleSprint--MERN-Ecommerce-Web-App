@@ -67,6 +67,16 @@ app.get("/userdata", async (req, res) => {
   }
 });
 
+const Item=require('./models/itemsModel.js');
+app.get('/api/items', async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 app.post("/updateuserdata", async (req, res) => {
   try {
     const token=req.headers.authorization.split(" ")[1];
@@ -133,7 +143,7 @@ app.post("/login", async (req, res) => {
 app.get("/", (req, res) => {
   res.json("Hello, this is your backend server");
 });
-app.use('/api/items', require("./routes/items"))
+
 const PORT=process.env.PORT||6969;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
