@@ -11,7 +11,7 @@ const ProductView = (props) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        axios.get("https://shema-backend.vercel.app/api/items")
+        axios.get("https://shop-backend-two.vercel.app/api/items")
             .then(res => {
                 setItem(res.data.filter((item) => item._id === param.id))
                 setLoading(false)
@@ -19,7 +19,7 @@ const ProductView = (props) => {
             .catch(err => console.log(err))
 
     }, [param.id])
-    
+
     return (
             <div className="d-flex min-vh-100 w-100 justify-content-center align-items-center m-auto">
                 {loading && <ReactLoading type="balls" color='#FFE26E' height={100} width={100} className='m-auto'/>}
@@ -27,5 +27,5 @@ const ProductView = (props) => {
             </div>
      );
 }
- 
+
 export default ProductView;

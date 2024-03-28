@@ -120,7 +120,7 @@ const ManageAccount=() => {
                 </div>
                 <div className='inYourCart'>
                     <h1 className='text-center text-4xl'> CART ITEMS</h1>
-                    {cartItems.items.map((item) => <img key={item._id} src={`https://shema-backend.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
+                    {cartItems.items.map((item) => <img key={item._id} src={`https://shop-backend-two.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
                 </div>
                 <div className="separator__line"></div>
                 <div className="delete_account__container">

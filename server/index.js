@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectDB=require("./config/db");
 const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
+const Item=require("./models/itemsModel.js")
 
 app.use(cors());
 app.use(express.json());
@@ -12,11 +13,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 connectDB();
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log("Connected to MongoDB");
-}).catch((err) => {
-  console.error("Error connecting to MongoDB:", err);
+app.get('/api/items', async (req, res) => {
+  try {
+    const items=await Item.find();
+    res.json(items);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
+
+// mongoose.connect(process.env.MONGO_URI).then(() => {
+//   console.log("Connected to MongoDB");
+// }).catch((err) => {
+//   console.error("Error connecting to MongoDB:", err);
+// });
 
 const shoeSchema=new mongoose.Schema({
   brand: String,
@@ -129,7 +140,6 @@ app.post("/login", async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
-app.use('/api/items', require("./routes/items"))
 
 app.get("/", (req, res) => {
   res.json("Hello, this is your backend server");
