@@ -110,7 +110,7 @@
   font-weight: bold;
 }
 .inYourCart {
-  height: 300px;
+  height: auto;
   width: 100%;
   box-shadow: #bcbaba 2px 2px 8px;
 }

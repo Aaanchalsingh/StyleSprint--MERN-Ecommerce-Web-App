@@ -6,11 +6,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { TabTitle } from '../../utils/General';
 import { Button } from '@mui/material';
 
 const Category = (props) => {
-    TabTitle(props.name)
 
     const [show, setShow] = useState('All');
     const [filter, setFilter] = useState('Latest');
@@ -23,14 +21,14 @@ const Category = (props) => {
         setFilter(event.target.value);
     };
 
-    return ( 
+    return (
         <div className="category__container">
             <div className="category">
                 <div className="category__header__container">
                     <div className="category__header__big">
                         <div className="category__header">
                             <h2>{props.name}</h2>
-                        </div> 
+                        </div>
                         <div className="category__header__line"></div>
                     </div>
                     <div className="category__sort">
@@ -78,5 +76,5 @@ const Category = (props) => {
         </div>
      );
 }
- 
+
 export default Category;

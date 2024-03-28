@@ -1,14 +1,13 @@
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Account from '../Account';
 import { useNavigate } from 'react-router-dom';
 import './ManageAccount.css';
 import { CartItemsContext } from '../../../Context/CartItemsContext';
-import CartCard from '../../Card/Cart/CartCard/CartCard';
 
 const ManageAccount=() => {
     const navigate=useNavigate();
-    const cartItems = useContext(CartItemsContext);
+    const cartItems=useContext(CartItemsContext);
     const [userData, setUserData]=useState({
         email: "",
         password: "",
@@ -121,8 +120,7 @@ const ManageAccount=() => {
                 </div>
                 <div className='inYourCart'>
                     <h1 className='text-center text-4xl'> CART ITEMS</h1>
-                    {cartItems.items.map((item) => <CartCard key={item._id} item={item}/>)}
-
+                    {cartItems.items.map((item) => <img key={item._id} src={`https://shema-backend.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
                 </div>
                 <div className="separator__line"></div>
                 <div className="delete_account__container">
