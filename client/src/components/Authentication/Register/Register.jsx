@@ -21,7 +21,7 @@ const Register = () => {
   const register = (e) => {
     e.preventDefault();
     axios
-      .post("https://shop-backend-two.vercel.app/Register", user)
+      .post("https://shop-backend-nine.vercel.app/Register", user)
       .then((res) => {
         const token = res.data.token;
         if (token) {

@@ -10,7 +10,7 @@ const Home = () => {
     const [ featuredItems, setFeaturedItems ] = useState()
 
     useEffect(() => {
-        axios.get("https://shop-backend-two.vercel.app/api/items")
+        axios.get("https://shop-backend-nine.vercel.app/api/items")
             .then(res => setFeaturedItems(res.data))
             .catch(err => console.log(err))
 

@@ -11,7 +11,7 @@ const ProductView = (props) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        axios.get("https://shop-backend-two.vercel.app/api/items")
+        axios.get("https://shop-backend-nine.vercel.app/api/items")
             .then(res => {
                 setItem(res.data.filter((item) => item._id === param.id))
                 setLoading(false)

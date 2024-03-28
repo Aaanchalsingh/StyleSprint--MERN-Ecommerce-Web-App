@@ -19,7 +19,7 @@ const ManageAccount=() => {
     useEffect(() => {
         const fetchUserData=async () => {
             try {
-                const response=await axios.get('https://shop-backend-two.vercel.app/userdata', {
+                const response=await axios.get('https://shop-backend-nine.vercel.app/userdata', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -44,7 +44,7 @@ const ManageAccount=() => {
     const handleSubmit=async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://shop-backend-two.vercel.app/updateuserdata', userData, {
+            await axios.post('https://shop-backend-nine.vercel.app/updateuserdata', userData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -59,7 +59,7 @@ const ManageAccount=() => {
         const userId=userData._id;
         console.log(userId);
         try {
-            await axios.delete(`https://shop-backend-two.vercel.app/deleteuser/${userId}`, {
+            await axios.delete(`https://shop-backend-nine.vercel.app/deleteuser/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -120,7 +120,7 @@ const ManageAccount=() => {
                 </div>
                 <div className='inYourCart'>
                     <h1 className='text-center text-4xl'> CART ITEMS</h1>
-                    {cartItems.items.map((item) => <img key={item._id} src={`https://shop-backend-two.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
+                    {cartItems.items.map((item) => <img key={item._id} src={`https://shop-backend-nine.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
                 </div>
                 <div className="separator__line"></div>
                 <div className="delete_account__container">
