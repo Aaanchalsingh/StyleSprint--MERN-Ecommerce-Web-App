@@ -2,7 +2,8 @@ const express=require("express");
 const app=express();
 const cors=require("cors");
 require("dotenv").config();
-const connectDB=require("./config/db");
+const AuthDB=require("./config/db");
+const ItemDB=require("./config/Itemdb");
 const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
 const Item=require("./models/itemsModel.js")
@@ -12,10 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
-
-var conn=mongoose.createConnection(process.env.MONGO_URI);
-var conn2=mongoose.createConnection("mongodb+srv://Aanchal:Aanchal123@cluster0.jfg08id.mongodb.net/Items");
-
+AuthDB();
+ItemDB();
 const shoeSchema=new mongoose.Schema({
   brand: String,
   name: String,

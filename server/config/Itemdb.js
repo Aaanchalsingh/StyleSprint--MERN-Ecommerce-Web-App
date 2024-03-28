@@ -2,10 +2,10 @@ const mongoose = require("mongoose")
 mongoose.set('strictQuery', false);
 
 
-const AuthDB = async () => {
+const ItemDB = async () => {
     try {
-        mongoose.connect(process.env.MONGO_URI)
-        console.log("Mongo AuthDB Connected")
+        mongoose.createConnection(process.env.MONGO_URI_ITEMS);
+        console.log("Mongo ItemDB Connected")
     }
     catch(err) {
         console.log("Mongo DB NOT Connected: ")
@@ -13,4 +13,4 @@ const AuthDB = async () => {
     }
 }
 
-module.exports = AuthDB
+module.exports = ItemDB
