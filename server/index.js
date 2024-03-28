@@ -67,16 +67,6 @@ app.get("/userdata", async (req, res) => {
   }
 });
 
-const Item=require('./models/itemsModel.js');
-app.get('/api/items', async (req, res) => {
-  try {
-    const items = await Item.find();
-    res.json(items);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 app.post("/updateuserdata", async (req, res) => {
   try {
     const token=req.headers.authorization.split(" ")[1];
@@ -139,6 +129,7 @@ app.post("/login", async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
+app.use('/api/items', require("./routes/items"))
 
 app.get("/", (req, res) => {
   res.json("Hello, this is your backend server");
