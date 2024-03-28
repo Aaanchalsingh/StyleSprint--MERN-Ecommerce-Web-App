@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import Account from '../Account';
 import { useNavigate } from 'react-router-dom';
 import './ManageAccount.css';
+import { CartItemsContext } from '../../../Context/CartItemsContext';
+import CartCard from '../../Card/Cart/CartCard/CartCard';
 
 const ManageAccount=() => {
     const navigate=useNavigate();
+    const cartItems = useContext(CartItemsContext);
     const [userData, setUserData]=useState({
         email: "",
         password: "",
@@ -115,6 +118,11 @@ const ManageAccount=() => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='inYourCart'>
+                    <h1 className='text-center text-4xl'> CART ITEMS</h1>
+                    {cartItems.items.map((item) => <CartCard key={item._id} item={item}/>)}
+
                 </div>
                 <div className="separator__line"></div>
                 <div className="delete_account__container">
