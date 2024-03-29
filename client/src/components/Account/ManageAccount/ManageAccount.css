@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap");
 .manage__account__container {
   height: auto;
   width: 100%;
@@ -111,6 +112,35 @@
 }
 .inYourCart {
   height: auto;
-  width: 100%;
-  box-shadow: #bcbaba 2px 2px 8px;
+  width: auto;
+
+}
+.inYourCart h1{
+  font-family: "Rubik Scribble";
+  color: black;
+   font-weight: bolder;
+}
+.accountimagecart {
+  height: auto;
+  width: 10vw;
+}
+.carddd{
+  height: auto;
+  width: 22vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5vh;
+  margin-bottom: 5vh;
+  align-content: center;
+
+}
+.carddd:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.carddd h2{
+  padding-top:  5vh;
 }

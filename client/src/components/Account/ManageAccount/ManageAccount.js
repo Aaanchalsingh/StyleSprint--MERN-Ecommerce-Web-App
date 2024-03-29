@@ -118,9 +118,16 @@ const ManageAccount=() => {
                         </div>
                     </div>
                 </div>
-                <div className='inYourCart'>
-                    <h1 className='text-center text-4xl'> CART ITEMS</h1>
-                    {cartItems.items.map((item) => <img key={item._id} src={`https://shop-backend-nine.vercel.app/public/${item.category}/${item.image[0].filename}`} alt={item.name} />)}
+                <div className='inYourCart mt-5'>
+                    <h1 className='text-center text-4xl mt-5 mb-5 '> CART ITEMS</h1>
+                    <div className='flex flex-wrap '>
+                        {cartItems.items.map((item) =>
+                            <div className='shadow carddd cursor-pointer '>
+                                <img key={item._id} src={`https://shema-backend.vercel.app/public/${item.category}/${item.image[0].filename}`} className='accountimagecart' alt={item.name} />
+                                <h2 className='text-center pb-5 text-purple-800 text-2xl '>{item.name}</h2>
+                            </div>)}
+                    </div>
+
                 </div>
                 <div className="separator__line"></div>
                 <div className="delete_account__container">
