@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { GoogleLogin } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = ({ setLoginUser }) => {
+  const responseGoogleSuccess = async (response) => {
+    try {
+      const result = await axios({
+        method: "POST",
+        url: `${process.env.server_url}/googlelogin`,
+        data: { idToken: response.tokenId },
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const responseGoogleError = (response) => {
+    console.log(response);
+  };
+
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -106,7 +123,6 @@ const Login = ({ setLoginUser }) => {
     });
     setLoginError("");
     setSignupError("");
-
   };
 
   return (
@@ -122,6 +138,13 @@ const Login = ({ setLoginUser }) => {
                   <div className="btn" onClick={() => toggleForm("login")}>
                     Log in
                   </div>
+                  <GoogleLogin
+                    clientId="390708898118-5mv1m9mdebn7ts0el3gmpkibtju63j4a.apps.googleusercontent.com"
+                    buttonText="Login with google"
+                    onSuccess={() => {{responseGoogleSuccess}}}
+                    onFailure={() => {responseGoogleError}}
+                    cookiePolicy={"single_host_origin"}
+                  />
                 </div>
               </div>
             </div>

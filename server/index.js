@@ -2,6 +2,7 @@ const express=require("express");
 const app=express();
 const cors=require("cors");
 require("dotenv").config();
+import {googleLogin} from '../controllers/auth.js';
 const AuthDB=require("./config/db");
 const ItemDB=require("./config/Itemdb");
 const mongoose=require("mongoose");
