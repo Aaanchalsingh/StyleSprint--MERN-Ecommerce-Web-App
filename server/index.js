@@ -2,13 +2,16 @@ const express=require("express");
 const app=express();
 const cors=require("cors");
 require("dotenv").config();
-import {googleLogin} from '../controllers/auth.js';
+const authRoutes =require("./routes/authRoutes.js");
+
+
 const AuthDB=require("./config/db");
 const ItemDB=require("./config/Itemdb");
 const mongoose=require("mongoose");
 const jwt=require("jsonwebtoken");
 const Item=require("./models/itemsModel.js")
 
+app.use("/", authRoutes);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,9 +1,10 @@
-import User from "../models/user.js";
-import jwt from "jsonwebtoken";
-import { OAuth2Client } from "google-auth-library";
+const User = require("../models/user.js");
+const jwt = require("jsonwebtoken");
+const { OAuth2Client } = require("google-auth-library");
 
+// handles google login
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-export const googleLogin = (req, res) => {
+const googleLogin = (req, res) => {
   const { idToken } = req.body;
 
   client
@@ -59,3 +60,5 @@ export const googleLogin = (req, res) => {
       }
     });
 };
+
+module.exports = { googleLogin };

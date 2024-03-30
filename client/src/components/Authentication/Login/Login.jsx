@@ -17,6 +17,7 @@ const Login = ({ setLoginUser }) => {
       console.log(error);
     }
   };
+
   const responseGoogleError = (response) => {
     console.log(response);
   };
@@ -77,7 +78,7 @@ const Login = ({ setLoginUser }) => {
       });
     }
   };
-  // eslint-disable-next-line
+// eslint-disable-next-line
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/account/login");
@@ -141,8 +142,8 @@ const Login = ({ setLoginUser }) => {
                   <GoogleLogin
                     clientId="390708898118-5mv1m9mdebn7ts0el3gmpkibtju63j4a.apps.googleusercontent.com"
                     buttonText="Login with google"
-                    onSuccess={() => {{responseGoogleSuccess}}}
-                    onFailure={() => {responseGoogleError}}
+                    onSuccess={responseGoogleSuccess}
+                    onFailure={responseGoogleError}
                     cookiePolicy={"single_host_origin"}
                   />
                 </div>

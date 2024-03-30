@@ -1,8 +1,8 @@
-import express from "express";
-import { googleLogin } from '../controllers/auth.js';
+const express = require("express");
+const { googleLogin } = require('../controllers/auth.js');
 
-const authRoutes=express.Router();
+const authRoutes = express.Router();
 
-authRoutes.post('/googlelogin', googleLogin)
+authRoutes.post('/googlelogin', googleLogin);
 
-export default authRoutes;
+module.exports = authRoutes;
