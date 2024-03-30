@@ -226,7 +226,7 @@ const Login = ({ setLoginUser }) => {
                       </div>
                     </>
                   )}
-                  <p className="mt-6 text-center text-slate-400">OR</p>
+                  <p className="mt-6 text-center text-slate-400">Or</p>
                   <center>
                     <GoogleLogin
                       className="mt-2"
