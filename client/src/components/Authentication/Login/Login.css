@@ -171,6 +171,7 @@
   top: -30px;
   transition: all 0.5s ease 0s;
   width: 340px;
+  display: flex;
 }
 
 .login-form-container .container-form::before {
@@ -234,6 +235,9 @@
 .login-form-container.log-in .container-form .form-item.log-in {
   left: -100%;
   opacity: 0;
+}
+.ppp{
+  color: blue;
 }
 
 

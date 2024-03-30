@@ -9,7 +9,7 @@ const Login = ({ setLoginUser }) => {
     try {
       const result = await axios({
         method: "POST",
-        url: `${process.env.server_url}/googlelogin`,
+        url: "https://shop-backend-nine.vercel.app/googlelogin",
         data: { idToken: response.tokenId },
       });
       console.log(result);
@@ -78,7 +78,7 @@ const Login = ({ setLoginUser }) => {
       });
     }
   };
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/account/login");
@@ -139,13 +139,6 @@ const Login = ({ setLoginUser }) => {
                   <div className="btn" onClick={() => toggleForm("login")}>
                     Log in
                   </div>
-                  <GoogleLogin
-                    clientId="390708898118-5mv1m9mdebn7ts0el3gmpkibtju63j4a.apps.googleusercontent.com"
-                    buttonText="Login with google"
-                    onSuccess={responseGoogleSuccess}
-                    onFailure={responseGoogleError}
-                    cookiePolicy={"single_host_origin"}
-                  />
                 </div>
               </div>
             </div>
@@ -233,6 +226,17 @@ const Login = ({ setLoginUser }) => {
                       </div>
                     </>
                   )}
+                  <p className="mt-6 text-center text-slate-400">OR</p>
+                  <center>
+                    <GoogleLogin
+                      className="mt-2"
+                      clientId="390708898118-5mv1m9mdebn7ts0el3gmpkibtju63j4a.apps.googleusercontent.com"
+                      buttonText="Login with google"
+                      onSuccess={responseGoogleSuccess}
+                      onFailure={responseGoogleError}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </center>
                 </div>
               </div>
             </div>
