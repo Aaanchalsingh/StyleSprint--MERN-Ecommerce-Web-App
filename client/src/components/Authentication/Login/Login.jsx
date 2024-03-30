@@ -7,12 +7,12 @@ import "./Login.css";
 const Login = ({ setLoginUser }) => {
   const responseGoogleSuccess = async (response) => {
     try {
-      // const result = await axios({
-      //   method: "POST",
-      //   url: "https://shop-backend-nine.vercel.app/googlelogin",
-      //   data: { idToken: response.tokenId },
-      // });
-      // console.log(result);
+      const result = await axios({
+        method: "POST",
+        url: "https://shop-backend-nine.vercel.app/googlelogin",
+        data: { idToken: response.tokenId },
+      });
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
