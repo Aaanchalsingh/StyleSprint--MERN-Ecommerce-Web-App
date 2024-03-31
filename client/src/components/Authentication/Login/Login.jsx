@@ -29,6 +29,7 @@ const Login = ({ setLoginUser }) => {
   const register = async (e) => {
     e.preventDefault();
     try {
+      console.log("hello");
       const res = await axios.post(
         "https://shop-backend-nine.vercel.app/Register",
         user
@@ -50,6 +51,7 @@ const Login = ({ setLoginUser }) => {
         window.location.reload();
       }
     } catch (err) {
+      console.log(user);
       setSignupError("Wrong credentials. Please try again.");
       setUser({
         ...user,
@@ -74,7 +76,7 @@ const Login = ({ setLoginUser }) => {
         user
       );
       console.log(res.data);
-      if (res.data === "not registered") {
+      if (res.data === "Not registered") {
         setLoginError("Invalid credentials");
         setUser({
           ...user,
