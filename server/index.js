@@ -144,6 +144,29 @@ app.get("/", (req, res) => {
   res.json("Hello, this is your backend server");
 });
 
+app.post("/register", async (req, res) => {
+  const { fullname, username, email, password }=req.body;
+  try {
+    const existingUser=await User.findOne({ email: email });
+    if (existingUser) {
+      res.send({ message: "User already exists" });
+    } else {
+      const newUser=new User({ fullname, username, email, password });
+      await newUser.save();
+      const token=jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
+      res.send({ message: "Registration successful", token: token });
+    }
+  } catch (error) {
+    console.error("Error registering user:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/logout", (req, res) => {
+  res.clearCookie('token');
+  res.send({ message: "Logout successful" });
+});
+
 const PORT=process.env.PORT||6969;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
