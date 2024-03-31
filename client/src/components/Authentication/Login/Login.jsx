@@ -12,8 +12,11 @@ const Login = ({ setLoginUser }) => {
         url: "https://shop-backend-nine.vercel.app/googlelogin",
         data: { idToken: response.tokenId },
       });
+      console.log("working")
       console.log(result);
+      navigate("/");
     } catch (error) {
+      console.log("not working")
       console.log(error);
     }
   };
