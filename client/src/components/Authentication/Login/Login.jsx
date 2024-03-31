@@ -233,7 +233,7 @@ const Login = ({ setLoginUser }) => {
                   <center>
                     <GoogleLogin
                       className="mt-2"
-                      clientId="390708898118-ltmboquqs8d327r1qncjk6sg1cqq6l6i.apps.googleusercontent.com"
+                      clientId="390708898118-pptmjo3d90gukans6tvq3kfelajtqdee.apps.googleusercontent.com"
                       buttonText="Login with google"
                       onSuccess={responseGoogleSuccess}
                       onFailure={responseGoogleError}
