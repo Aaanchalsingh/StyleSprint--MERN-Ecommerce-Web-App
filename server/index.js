@@ -157,7 +157,7 @@ app.post("/register", async (req, res) => {
       res.send({ message: "Registration successful", token: token });
     }
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error registering user", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
