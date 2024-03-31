@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm install react-google-login --legacy-peer-deps"
+    "postinstall": "npm install react-google-login --force"
   },
   "eslintConfig": {
     "extends": [
