@@ -13,9 +13,9 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.3.3",
     "rc-drawer": "^5.1.0",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.9.0-beta.1",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.22.3",
@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm install react-google-login --legacy-peer-deps"
   },
   "eslintConfig": {
     "extends": [
