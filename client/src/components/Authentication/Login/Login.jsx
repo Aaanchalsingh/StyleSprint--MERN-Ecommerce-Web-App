@@ -1,30 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { GoogleLogin } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = ({ setLoginUser }) => {
-  const responseGoogleSuccess = async (response) => {
-    try {
-      const result = await axios({
-        method: "POST",
-        url: "https://shop-backend-nine.vercel.app/googlelogin",
-        data: { idToken: response.tokenId },
-      });
-      console.log("working")
-      console.log(result);
-      navigate("/");
-    } catch (error) {
-      console.log("not working")
-      console.log(error);
-    }
-  };
-
-  const responseGoogleError = (response) => {
-    console.log(response);
-  };
-
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -229,17 +208,6 @@ const Login = ({ setLoginUser }) => {
                       </div>
                     </>
                   )}
-                  <p className="mt-6 text-center text-slate-400">Or</p>
-                  <center>
-                    <GoogleLogin
-                      className="mt-2"
-                      clientId="390708898118-pptmjo3d90gukans6tvq3kfelajtqdee.apps.googleusercontent.com"
-                      buttonText="Login with google"
-                      onSuccess={responseGoogleSuccess}
-                      onFailure={responseGoogleError}
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  </center>
                 </div>
               </div>
             </div>
