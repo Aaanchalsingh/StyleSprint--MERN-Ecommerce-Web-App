@@ -7,7 +7,7 @@ StyleSprint is a full-stack e-commerce website built using the MERN stack (Mongo
 1. **Clone the repository:**
    
    ```bash
-   git clone <https://github.com/[username]/StyleSprint.git>
+   git clone <https://github.com/Aaanchalsingh/StyleSprint.git>
    
 3. **Install the dependencies:**
    
