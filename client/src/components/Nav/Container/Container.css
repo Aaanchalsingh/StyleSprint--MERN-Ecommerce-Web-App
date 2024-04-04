@@ -2,7 +2,7 @@
     height: 70px;
     width: 100%;
     display: flex;
-    
+
 }
 
 .top__container {
@@ -55,6 +55,9 @@
 @media screen and (max-width: 780px) {
     .control__bar{
        display: none;
+    }
+    .top__container{
+        width: 100%;
     }
     .drawer{
         display: flex;

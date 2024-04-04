@@ -5,7 +5,7 @@ import Logo from "./style.png";
 const NavBrand = () => {
     return (
         <div href="#home" className='navbrand__container mt-2'>
-           <h1 className='navbrand'>
+           <h1 className='navbrand pl-12'>
                <Link to="/"><img src={Logo} alt="" srcset="" /></Link>
             </h1>
         </div>

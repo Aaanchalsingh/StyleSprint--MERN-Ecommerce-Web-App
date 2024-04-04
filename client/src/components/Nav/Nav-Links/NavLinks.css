@@ -58,3 +58,9 @@ a:hover {
        margin: auto 10px;
     }
 }
+@media only screen and (max-width: 600px) {
+    .nav__bottom__container{
+        width:  90%;
+        background-color: aqua;
+    }
+}
