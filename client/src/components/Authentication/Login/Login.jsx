@@ -169,6 +169,17 @@ const Login = ({ setLoginUser }) => {
                       <div className="btn" onClick={login}>
                         Log in
                       </div>
+                      <div className="md:hidden">
+                        <p className="text-center mt-5">
+                          Don't have an account?
+                        </p>
+                        <div
+                          className="btn"
+                          onClick={() => toggleForm("signup")}
+                        >
+                          Sign up
+                        </div>
+                      </div>
                     </>
                   ) : (
                     <>
@@ -207,6 +218,17 @@ const Login = ({ setLoginUser }) => {
                       )}
                       <div className="btn" onClick={register}>
                         Sign up
+                      </div>
+                      <div className="md:hidden">
+                      <p className="text-center mt-5">
+                        Have an account?
+                      </p>
+                      <div
+                        className="btn"
+                        onClick={() => toggleForm("login")}
+                      >
+                        Log in
+                      </div>
                       </div>
                     </>
                   )}

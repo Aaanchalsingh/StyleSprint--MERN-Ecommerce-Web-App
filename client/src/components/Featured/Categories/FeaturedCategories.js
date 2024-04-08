@@ -5,9 +5,9 @@ import './FeaturedCategories.css'
 
 const Categories = () => {
     const featuredCategories = useContext(FeatureCategoryContext)
-    
-    return ( 
-        <div className="featured__categories__container">
+
+    return (
+        <div className="featured__categories__container" id="next">
             <div className="featured__categories">
                 <div className="featured__categories__header">
                     <h1 className='featured__header__big'>Featured Categories </h1>
@@ -17,8 +17,8 @@ const Categories = () => {
                     { featuredCategories.map((category) =>  <CategoryCard key={category.id} data={category}/>)}
                 </div>
             </div>
-        </div>  
+        </div>
      );
 }
- 
+
 export default Categories;

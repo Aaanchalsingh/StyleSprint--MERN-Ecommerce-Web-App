@@ -3,6 +3,7 @@ import logo from "./1.png";
 import l1 from "./2.png";
 import l2 from "./3.png";
 import "./Landing.css";
+import { Link } from 'react-router-dom';
 
 function Landing() {
     return (
@@ -14,8 +15,8 @@ function Landing() {
                     </h1>
                     <p className="text-xl mb-3 text-slate-500">Ready to impress with our fabulous style collection</p>
                     <div className="flex mb-6 but">
-                        <button className="btn md:pl-6 md:pr-6  md:mr-4 btn-hover color-1 text-3xl ">Shop Now</button>
-                        <button className="btn btn-light  btn-hover color-10 text-3xl ">Learn More</button>
+                        <Link className="btn md:pl-6 md:pr-6  md:mr-4 btn-hover color-1 text-3xl " to="/shop">Shop Now</Link>
+                        <a className="btn btn-light  btn-hover color-10 text-3xl " href ="#next">Learn More</a>
                     </div >
                     <div className="photo flex mt-4">
                         <div >

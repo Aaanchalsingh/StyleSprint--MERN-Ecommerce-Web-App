@@ -87,7 +87,7 @@ function ShoesList() {
       brand: "tiger",
       name: "TIGER ALLY",
       price: 999,
-      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger08.png",
+      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger01.png",
     },
     {
       brand: "adidas",
@@ -165,7 +165,7 @@ function ShoesList() {
       brand: "tiger",
       name: "TIGER ALLY",
       price: 999,
-      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger08.png",
+      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger01.png",
     },
     {
       brand: "adidas",
@@ -183,7 +183,7 @@ function ShoesList() {
       brand: "tiger",
       name: "TIGER ALLY",
       price: 999,
-      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger09.png",
+      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger05.png",
     },
     {
       brand: "adidas",
@@ -231,7 +231,7 @@ function ShoesList() {
       brand: "tiger",
       name: "TIGER ALLY",
       price: 999,
-      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger10.png",
+      image: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/tiger02.png",
     },
   ];
 

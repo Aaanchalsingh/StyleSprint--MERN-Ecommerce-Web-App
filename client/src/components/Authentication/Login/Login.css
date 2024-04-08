@@ -6,7 +6,6 @@
   width: 100%;
   padding-top: 10vh;
   padding-bottom: 10vh;
-
 }
 
 .login-form-body::before {
@@ -28,7 +27,7 @@
   transition: all 0.5s ease 0s;
   vertical-align: middle;
 }
-.form-item{
+.form-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,7 +121,6 @@
   transition: all 0.3s ease 0s;
   vertical-align: middle;
   width: 300px;
-
 }
 
 .login-form-container .container-forms .container-info .info-item p {
@@ -236,8 +234,18 @@
   left: -100%;
   opacity: 0;
 }
-.ppp{
+.ppp {
   color: blue;
 }
-
-
+@media only screen and (max-width: 600px) {
+  .login-form-body {
+    overflow-x: hidden;
+  }
+  .login-form-container {
+    margin-left: 0 !important;
+    width: auto;
+  }
+  .form-item {
+    padding: 0;
+  }
+}

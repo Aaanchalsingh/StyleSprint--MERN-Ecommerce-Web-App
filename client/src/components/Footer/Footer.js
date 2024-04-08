@@ -9,7 +9,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 
 const Footer = () => {
-    return ( 
+    return (
         <footer>
             <div className="footer__container">
                 <div className="footer__items__container">
@@ -41,10 +41,10 @@ const Footer = () => {
                                 <LocalPhoneIcon /> <span>+123 4567 890</span>
                             </li>
                             <li className="footer__contact">
-                                <EmailIcon /> <span>shop@shema.com</span>
+                                <EmailIcon /> <span>aanchal@gmail.com</span>
                             </li>
                             <li className="footer__contact">
-                                <LocationOnIcon /> <span>Addis Ababa, Ethiopia</span>
+                                <LocationOnIcon /> <span>Jalandhar,Punjab</span>
                             </li>
                         </ul>
                     </div>
@@ -73,7 +73,7 @@ const Footer = () => {
                 </div>
                 <div className="fotter__copyright__container">
                     <ul className='nav'>
-                        <li className="footer__copyright">©2022 Shema Ltd. |</li>
+                        <li className="footer__copyright">©2024 </li>
                         <li className="footer__terms__condition"> | Terms & Condition |</li>
                         <li className="footer__privacy__policy">| Privacy Policy</li>
                     </ul>
@@ -82,5 +82,5 @@ const Footer = () => {
         </footer>
      );
 }
- 
+
 export default Footer;
