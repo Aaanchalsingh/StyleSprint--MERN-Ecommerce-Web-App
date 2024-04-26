@@ -18,7 +18,7 @@
 }
 
 .footer__help__container {
-  width: 300px;
+  width: 350px;
   height: 180px;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 .footer__contact__container {
-  width: 300px;
+  width: 350px;
   height: 180px;
   display: flex;
   justify-content: center;
