@@ -34,7 +34,6 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
   // eslint-disable-next-line
-  //*** */
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/account/login");

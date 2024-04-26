@@ -6,6 +6,7 @@ import './ManageAccount.css';
 import { CartItemsContext } from '../../../Context/CartItemsContext';
 
 const ManageAccount=() => {
+    const [location, setLocation]=useState(null);
     const navigate=useNavigate();
     const cartItems=useContext(CartItemsContext);
     const [userData, setUserData]=useState({
@@ -39,6 +40,41 @@ const ManageAccount=() => {
             ...prevUserData,
             [name]: value
         }));
+    };
+    const handleLocation=async (e) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude }=position.coords;
+                    try {
+                        const response=await fetch(
+                            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+                        );
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch address');
+                        }
+                        const data=await response.json();
+                        console.log('Geocoding API Response:', data);
+                        if (data.address) {
+                            const city=data.address.city||data.address.town||data.address.village||data.address.hamlet||'Unknown';
+                            const state=data.address.state||data.address.county||'Unknown';
+                            setLocation(`${city}, ${state}`);
+                        } else {
+                            setLocation('Address not found');
+                        }
+                    } catch (error) {
+                        console.error('Error fetching address:', error);
+                        setLocation('Error fetching address');
+                    }
+                },
+                (error) => {
+                    console.error('Error getting location:', error);
+                    setLocation('Error getting location');
+                }
+            );
+        } else {
+            setLocation('Geolocation is not supported by this browser.');
+        }
     };
 
     const handleSubmit=async (e) => {
@@ -76,44 +112,57 @@ const ManageAccount=() => {
     return (
         <Account>
             <div className="manage__account__container">
-                <div className="edit__account__container ">
+                <div className="edit__account__container w-full">
                     <div className="edit__account ml-5">
                         <div className="edit__account__header mt-2">Edit account</div>
-                        <div className=" edit__account__form__container ">
-                            <div className="edit__account__form flex flex-col flex-wrap justify-evenly">
-                                <div className="fname__input__container edit__input__container flex">
-                                    <label className="fname__label input__label mr-6">First&nbsp;name</label>
-                                    <input
-                                        type="text"
-                                        className="fname__input edit__account__input"
-                                        name="fullname"
-                                        value={userData.fullname}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="lname__input__container edit__input__container flex">
-                                    <label className="lname__label input__label mr-6">User&nbsp;name</label>
-                                    <input
-                                        type="text"
-                                        className="lname__input edit__account__input"
-                                        name="username"
-                                        value={userData.username}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="lname__input__container edit__input__container flex">
-                                    <label className="lname__label input__label ml-5 ">Email</label>
-                                    <input
-                                        type="text"
-                                        className="lname__input edit__account__input ml-4"
-                                        name="email"
-                                        value={userData.email}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="save__changes__button__container">
-                                    <button className="save__changes__button btn btn-dark btn-hover ml-[40%]" onClick={handleSubmit}>Save Changes</button>
-                                </div>
+                        <div className='flex flex-wrap gap-5'>
+                            <div className="fname__input__container edit__input__container flex">
+                                <label className="fname__label input__label mr-6">First&nbsp;name</label>
+                                <input
+                                    type="text"
+                                    className="fname__input edit__account__input"
+                                    name="fullname"
+                                    value={userData.fullname}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="lname__input__container edit__input__container flex">
+                                <label className="lname__label input__label mr-6">User&nbsp;name</label>
+                                <input
+                                    type="text"
+                                    className="lname__input edit__account__input"
+                                    name="username"
+                                    value={userData.username}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="lname__input__container edit__input__container flex">
+                                <label className="lname__label input__label ">Email</label>
+                                <input
+                                    type="text"
+                                    className="lname__input edit__account__input ml-4"
+                                    name="email"
+                                    value={userData.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="lname__input__container edit__input__container flex">
+                                <label className="lname__label input__label ">Location</label>
+                                <input
+                                    type="text"
+                                    className="lname__input edit__account__input ml-4"
+                                    name="loc"
+                                    value={location}
+                                    onChange={handleChange}
+                                />
+                                <button className='btn btn-dark ml-4 w-auto' onClick={handleLocation}>
+                                    See your Location
+                                </button>
+
+                            </div>
+                            <div className="save__changes__button__container">
+                                <button className="save__changes__button btn btn-dark btn-hover" onClick={handleSubmit}>Save Changes</button>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 const express=require("express");
 const app=express();
 const cors=require("cors");
+
 require("dotenv").config();
 
 
@@ -39,16 +40,6 @@ app.post("/api/cart/add", (req, res) => {
   });
 });
 
-const userSchema=new mongoose.Schema({
-  fullname: String,
-  username: String,
-  email: String,
-  password: String
-});
-
-const JWT_SECRET=process.env.JWT_SECRET;
-
-const User=mongoose.model("User", userSchema);
 
 app.get("/userdata", async (req, res) => {
   try {
@@ -108,7 +99,34 @@ app.delete('/deleteuser/:userId', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+const JWT_SECRET=process.env.JWT_SECRET;
 
+const userSchema=new mongoose.Schema({
+  fullname: String,
+  username: String,
+  email: String,
+  password: String
+});
+
+const User=mongoose.model("User", userSchema);
+
+app.post("/register", async (req, res) => {
+  const { fullname, username, email, password }=req.body;
+  try {
+    const existingUser=await User.findOne({ email: email });
+    if (existingUser) {
+      res.send({ message: "User already exists" });
+    } else {
+      const newUser=new User({ fullname, username, email, password });
+      await newUser.save();
+      const token=jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
+      res.send({ message: "Registration successful", token: token });
+    }
+  } catch (error) {
+    console.error("Error registering user", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
 app.post("/login", async (req, res) => {
   const { email, password }=req.body;
   try {
@@ -144,23 +162,7 @@ app.get("/", (req, res) => {
   res.json("Hello, this is your backend server");
 });
 
-app.post("/register", async (req, res) => {
-  const { fullname, username, email, password }=req.body;
-  try {
-    const existingUser=await User.findOne({ email: email });
-    if (existingUser) {
-      res.send({ message: "User already exists" });
-    } else {
-      const newUser=new User({ fullname, username, email, password });
-      await newUser.save();
-      const token=jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
-      res.send({ message: "Registration successful", token: token });
-    }
-  } catch (error) {
-    console.error("Error registering user", error);
-    res.status(500).send({ message: "Internal Server Error" });
-  }
-});
+
 
 app.post("/logout", (req, res) => {
   res.clearCookie('token');

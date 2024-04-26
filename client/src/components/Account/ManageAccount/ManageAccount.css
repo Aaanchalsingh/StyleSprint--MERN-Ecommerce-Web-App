@@ -22,7 +22,7 @@
 }
 
 .edit__account {
-  width: 250px;
+  width: 100%;
   height: 100%;
 }
 
@@ -45,7 +45,7 @@
 
 .edit__input__container {
   height: 35%;
-  width: 100%;
+  width: auto;
 }
 
 .edit__account__input {
