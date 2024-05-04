@@ -41,7 +41,7 @@ const Footer = () => {
                                 <LocalPhoneIcon /> <span>+91 4567 89056</span>
                             </li>
                             <li className="footer__contact">
-                                <EmailIcon /> <span>aanchalsinghuk@gmail.com</span>
+                                <EmailIcon /> <span>xyz@gmail.com</span>
                             </li>
                             <li className="footer__contact">
                                 <LocationOnIcon /> <span>Jalandhar,Punjab</span>
