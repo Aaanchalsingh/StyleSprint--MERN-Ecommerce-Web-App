@@ -6,7 +6,7 @@ import './FeaturedItems.css'
 
 const FeaturedItems = (props) => {
     return (
-         
+
         <div className="featured__products__container">
             <div className="featured__products">
                 <div className="featured__products__header">
@@ -29,8 +29,8 @@ const FeaturedItems = (props) => {
                 }
                 </div>
             </div>
-        </div>        
+        </div>
      );
 }
- 
+
 export default FeaturedItems;
